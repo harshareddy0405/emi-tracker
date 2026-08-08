@@ -902,6 +902,21 @@ body.dark .form-grid input, body.dark .form-grid select, body.dark .secondary-bu
   .auth-heading > h1 { font-size: 26px; }
   .auth-form { gap: 16px; }
   .auth-privacy { margin-top: 21px; }
+  .loan-row .loan-name { align-items: flex-start; }
+  .loan-name small {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+  .loan-name .account-phase {
+    display: table;
+    max-width: 100%;
+    margin: 4px 0 0;
+    padding: 2px 4px;
+    font-size: 7.5px;
+  }
 }
 
 @media (max-height: 620px) and (max-width: 760px) {
@@ -1063,7 +1078,14 @@ body.dark .mobile-lender-filter select { color: var(--ink); border-color: var(--
 }
 
 /* Authenticated source-file library */
-.sources-view { width: 100%; max-width: 1240px; margin: 0 auto; padding-bottom: 28px; }
+.sources-view {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-bottom: 28px;
+  animation: none;
+  transform: none;
+}
 .source-summary {
   margin-bottom: 14px;
   padding: 18px 20px;
@@ -1289,7 +1311,17 @@ body.dark .mobile-lender-filter select { color: var(--ink); border-color: var(--
 .source-viewer-details dl > div { padding: 11px 0; border-top: 1px solid var(--line); }
 .source-viewer-details dt { margin-bottom: 4px; color: var(--muted); font-size: 10px; }
 .source-viewer-details dd { margin: 0; color: var(--ink); font-size: 12px; font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
-.source-viewer-details .icon-button { position: absolute; top: 14px; right: 14px; z-index: 2; background: var(--card); }
+.source-viewer-details .icon-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  background: var(--card);
+}
 .source-download { width: 100%; margin-top: 20px; justify-content: center; }
 body.source-viewer-open { overflow: hidden; }
 

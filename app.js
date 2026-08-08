@@ -27,6 +27,7 @@ const state = {
 };
 
 let initialLoanHash = window.location.hash.match(/^#loan-(.+)$/)?.[1];
+let sourceReturnDocumentId = null;
 
 function normalizeLoan(rawLoan) {
   const loan = { ...rawLoan };
@@ -657,6 +658,20 @@ function setView(view) {
   render();
 }
 
+function focusSourceViewer() {
+  requestAnimationFrame(() => document.querySelector(".source-viewer-details .icon-button")?.focus());
+}
+
+function closeSourceViewer() {
+  const returnDocumentId = sourceReturnDocumentId || state.selectedDocumentId;
+  state.selectedDocumentId = null;
+  render();
+  requestAnimationFrame(() => {
+    if (!returnDocumentId) return;
+    document.querySelector(`[data-source-id="${returnDocumentId}"]`)?.focus();
+  });
+}
+
 function attachChartTips() {
   document.querySelectorAll(".cashflow-panel").forEach(panel => {
     const tip = panel.querySelector(".chart-tooltip");
@@ -819,9 +834,14 @@ document.addEventListener("click", async event => {
   if (action === "add-gold-loan") { openGoldLoanDialog(); return; }
   if (action === "view-gold-loans") { state.loanFilter = "All"; state.loanSearch = "Gold loan"; setView("loans"); return; }
   if (action === "export") { exportCSV(); return; }
-  if (action === "back-sources") { state.selectedDocumentId = null; render(); return; }
+  if (action === "back-sources") { closeSourceViewer(); return; }
   const sourceCard = event.target.closest("[data-source-id]");
-  if (sourceCard) { state.selectedDocumentId = sourceCard.dataset.sourceId; render(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+  if (sourceCard) {
+    sourceReturnDocumentId = sourceCard.dataset.sourceId;
+    state.selectedDocumentId = sourceCard.dataset.sourceId;
+    render(); focusSourceViewer();
+    return;
+  }
   const sourceFilter = event.target.closest("[data-source-filter]");
   if (sourceFilter) { state.sourceFilter = sourceFilter.dataset.sourceFilter; render(); return; }
   const paidButton = event.target.closest("[data-toggle-paid]");
@@ -880,7 +900,24 @@ document.addEventListener("click", async event => {
 
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && state.selectedDocumentId) {
-    state.selectedDocumentId = null; render(); return;
+    event.preventDefault(); closeSourceViewer(); return;
+  }
+  if (event.key === "Tab" && state.selectedDocumentId) {
+    const panel = document.querySelector(".source-viewer-panel");
+    if (!panel) return;
+    const focusable = [...panel.querySelectorAll("button, a[href], iframe, [tabindex]:not([tabindex='-1'])")]
+      .filter(element => !element.hidden && element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!panel.contains(document.activeElement)) {
+      event.preventDefault(); (event.shiftKey ? last : first).focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+    return;
   }
   if (event.key !== "Enter" && event.key !== " ") return;
   const row = event.target.closest("[data-loan-id][role='button']");
