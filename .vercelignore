@@ -1,0 +1,25 @@
+.git/
+.vercel/
+.env
+.env.*
+node_modules/
+
+# Private documents and local audits must never become static assets.
+*.pdf
+*.jpeg
+*.jpg
+*.png
+*.zip
+*-seed-*.json
+UX_UAT_AUDIT.md
+mobile-audit.mjs
+uat-runner.mjs
+scripts/seed-portfolio.mjs
+scripts/verify-portfolio.mjs
+
+# Administrative files are not required by deployed functions.
+db/
+scripts/
+tests/
+BACKEND.md
+.env.example

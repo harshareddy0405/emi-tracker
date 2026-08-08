@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#16211d" />
+    <meta name="description" content="A private, mobile-friendly EMI tracker for loans, interest, and monthly payment planning." />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>EMI TRACKER</title>
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7.5h15a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h12"/><path d="M21 12h-5a2 2 0 0 0 0 4h5"/><circle cx="16" cy="14" r=".5"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V9M10 19V4M16 19v-7M22 19H2"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3A1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM14 21h-4"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 8A7 7 0 0 1 18 6l2 2M4 16l2 2a7 7 0 0 0 11.9-2"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 8.5 8.5 0 1 0 20 15.2Z"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M14 8l4 4-4 4M18 12H9"/></symbol>
+      <symbol id="i-file-image" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M7 18l3-3 2 2 3-4 3 5"/><circle cx="9" cy="10" r="1"/></symbol>
+    </svg>
+
+    <section class="auth-gate" id="authGate" aria-labelledby="loginTitle">
+      <div class="auth-frame">
+        <aside class="auth-brand-panel" aria-hidden="true">
+          <div class="auth-wordmark"><span>EM</span><strong>EMI TRACKER</strong></div>
+          <div class="auth-brand-copy">
+            <p>PRIVATE FINANCE WORKSPACE</p>
+            <h1>Every payment.<br />Clearly accounted for.</h1>
+            <span>Review monthly commitments, interest costs, and loan balances in one focused workspace.</span>
+          </div>
+          <div class="auth-trust"><i></i><span>Private by design</span></div>
+        </aside>
+
+        <main class="auth-card">
+          <div class="auth-mobile-wordmark"><span>EM</span><strong>EMI TRACKER</strong></div>
+          <header class="auth-heading">
+            <p>SECURE ACCESS</p>
+            <h1 id="loginTitle">Welcome back</h1>
+            <span>Sign in to open your private finance workspace.</span>
+          </header>
+
+          <form class="auth-form" id="loginForm" aria-busy="false" novalidate>
+            <div class="auth-field">
+              <label for="loginUsername">Username</label>
+              <input id="loginUsername" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" aria-describedby="loginError" required />
+            </div>
+            <div class="auth-field">
+              <label for="loginPassword">Password</label>
+              <input id="loginPassword" name="password" type="password" autocomplete="current-password" aria-describedby="loginError" required />
+            </div>
+            <p class="auth-error" id="loginError" role="alert" aria-live="assertive" hidden></p>
+            <button class="auth-submit" type="submit">
+              <span class="auth-submit-idle">Sign in</span>
+              <span class="auth-submit-busy"><i aria-hidden="true"></i>Signing in…</span>
+            </button>
+          </form>
+
+          <p class="auth-privacy"><svg aria-hidden="true"><use href="#i-lock"/></svg>Your session is protected and no credentials are stored in this page.</p>
+        </main>
+      </div>
+    </section>
+
+    <div class="authenticated-app" id="appShell" hidden>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" data-view-link="overview" aria-label="EMI TRACKER home">
+          <span class="brand-title">EMI TRACKER</span>
+        </a>
+
+        <nav class="side-nav" aria-label="Primary navigation">
+          <button class="nav-item active" data-view="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></button>
+          <button class="nav-item" data-view="loans"><svg><use href="#i-wallet"/></svg><span>My loans</span><em id="loanCountBadge">12</em></button>
+          <button class="nav-item" data-view="insights"><svg><use href="#i-chart"/></svg><span>Insights</span></button>
+          <button class="nav-item" data-view="schedule"><svg><use href="#i-calendar"/></svg><span>Schedule</span></button>
+          <button class="nav-item" data-view="sources"><svg><use href="#i-file-image"/></svg><span>Source files</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="nav-item" data-view="settings"><svg><use href="#i-settings"/></svg><span>Settings</span></button>
+          <button class="nav-item logout-button" id="logoutButton" type="button"><svg><use href="#i-logout"/></svg><span>Log out</span></button>
+          <div class="profile-card">
+            <span class="avatar">EM</span>
+            <span><strong>My finances</strong><small>Private workspace</small></span>
+            <svg><use href="#i-chevron"/></svg>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <span class="mobile-brand">EMI TRACKER</span>
+            <p class="eyebrow" id="pageEyebrow">FINANCIAL OVERVIEW</p>
+            <h1 id="pageTitle">Your EMI command center</h1>
+          </div>
+          <div class="top-actions">
+            <span class="local-status"><i></i>Securely synced</span>
+            <button class="primary-button" id="addLoanButton"><svg><use href="#i-plus"/></svg>Add loan</button>
+          </div>
+        </header>
+
+        <div id="viewRoot" aria-live="polite"></div>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <button class="active" data-view="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></button>
+      <button data-view="loans"><svg><use href="#i-wallet"/></svg><span>Loans</span></button>
+      <button data-view="insights"><svg><use href="#i-chart"/></svg><span>Insights</span></button>
+      <button data-view="schedule"><svg><use href="#i-calendar"/></svg><span>Schedule</span></button>
+      <button data-view="sources"><svg><use href="#i-file-image"/></svg><span>Sources</span></button>
+      <button data-view="settings"><svg><use href="#i-settings"/></svg><span>Settings</span></button>
+    </nav>
+
+    <dialog id="loanDialog" class="dialog">
+      <form method="dialog" id="loanForm">
+        <div class="dialog-head">
+          <div><p class="eyebrow">LOAN DETAILS</p><h2 id="loanDialogTitle">Add a loan</h2></div>
+          <button class="icon-button close-dialog" type="button" value="cancel" aria-label="Close"><svg><use href="#i-close"/></svg></button>
+        </div>
+        <div class="form-grid">
+          <label class="span-2">Loan name<input name="name" placeholder="e.g. Home loan" required /></label>
+          <label>Lender<input name="lender" placeholder="Enter lender name" required /></label>
+          <label>Category<select name="category"><option>Personal loan</option><option>Home loan</option><option>Car loan</option><option>Credit card EMI</option><option>Gold loan</option><option>Consumer durable</option></select></label>
+          <label class="span-2">Loan / account number<input name="accountNumber" placeholder="Optional account identifier" /></label>
+          <label>Repayment type<select name="repaymentType"><option value="amortizing">Principal + interest EMI</option><option value="interest_only">Interest-only payment</option></select></label>
+          <label>Monthly payment (₹)<input name="emi" type="number" min="1" step="0.01" placeholder="25000" required /></label>
+          <label>Interest rate (% p.a.)<input name="rate" type="number" min="0" max="100" step="0.01" placeholder="9.5" required /></label>
+          <label>Outstanding (₹)<input name="outstanding" type="number" min="0" step="0.01" placeholder="500000" required /></label>
+          <label>Original / sanctioned amount (₹)<input name="original" type="number" min="0" step="0.01" placeholder="750000" /></label>
+          <label>Payment day<input name="dueDay" type="number" min="1" max="31" value="5" required /></label>
+          <label>Start month<input name="start" type="month" required /></label>
+          <label>End month<input name="end" type="month" required /></label>
+          <label>Original tenure (months)<input name="tenureMonths" type="number" min="1" step="1" placeholder="60" /></label>
+          <label>Remaining instalments<input name="remainingInstallments" type="number" min="0" step="1" placeholder="42" /></label>
+          <label>Rate type<select name="rateType"><option value="">Not provided</option><option>Fixed</option><option>Floating</option></select></label>
+          <label>Repayment mode<input name="repaymentMode" placeholder="e.g. Auto debit" /></label>
+          <label>Disbursement date<input name="disbursedDate" type="date" /></label>
+          <label>First payment date<input name="firstDueDate" type="date" /></label>
+          <label>Maturity date<input name="maturityDate" type="date" /></label>
+          <label>Source position date<input name="sourceAsOf" type="date" /></label>
+          <label class="span-2">Account notes<textarea name="note" rows="3" placeholder="Fees, source notes, or repayment conditions"></textarea></label>
+        </div>
+        <div class="dialog-actions"><button class="secondary-button" type="button" value="cancel">Cancel</button><button class="primary-button" type="submit" value="default"><svg><use href="#i-plus"/></svg><span id="loanSubmitLabel">Add to tracker</span></button></div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status"><svg><use href="#i-check"/></svg><span>Done</span></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

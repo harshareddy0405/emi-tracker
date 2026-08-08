@@ -1,0 +1,24 @@
+node_modules/
+.vercel/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+
+# Private source documents are imported into Neon and must not enter Git/Vercel.
+*.pdf
+*.jpeg
+*.jpg
+*.png
+*.zip
+UX_UAT_AUDIT.md
+mobile-audit.mjs
+uat-runner.mjs
+
+# One-time portfolio import and reconciliation contain private acceptance data.
+scripts/seed-portfolio.mjs
+scripts/verify-portfolio.mjs
+*-seed-*.json
+.vercel
+.env*
+!.env.example

@@ -1,0 +1,20 @@
+{
+  "name": "emi-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:create-user": "node scripts/create-user.mjs",
+    "blob:upload": "node scripts/upload-private-blobs.mjs",
+    "test:api": "node --test tests/api-security.test.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
+    "@vercel/blob": "^2.7.0",
+    "ws": "^8.18.0"
+  }
+}

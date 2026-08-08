@@ -1,0 +1,17 @@
+{
+  "name": "EMI TRACKER",
+  "short_name": "EMI TRACKER",
+  "description": "Track monthly EMIs, lender allocation, interest, and repayment schedules.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f3ed",
+  "theme_color": "#16211d",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><rect width=%22192%22 height=%22192%22 rx=%2248%22 fill=%22%2316211d%22/><path d=%22M52 44h90v26H81v17h52v24H81v20h63v26H52z%22 fill=%22%23cceb6b%22/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
