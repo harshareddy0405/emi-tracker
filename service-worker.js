@@ -1,4 +1,4 @@
-const CACHE = "emi-tracker-v23";
+const CACHE = "emi-tracker-v24";
 const ASSETS = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.json"];
 
 self.addEventListener("install", event => {
