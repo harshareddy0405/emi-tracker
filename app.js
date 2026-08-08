@@ -320,7 +320,9 @@ function renderOverview() {
   const unpaid = data.loans.filter(loan => loan.snapshot.emi > 0 && !isPaid(loan.id, state.selectedMonth));
   const upcoming = [...unpaid].sort((a, b) => a.dueDay - b.dueDay).slice(0, 5);
   const paidTotal = data.loans.filter(loan => isPaid(loan.id, state.selectedMonth)).reduce((sum, loan) => sum + loan.snapshot.emi, 0);
-  const remainingTotal = Math.max(0, data.due - paidTotal);
+  const displayedDue = Math.round(data.due);
+  const displayedPaid = Math.min(displayedDue, Math.round(paidTotal));
+  const displayedRemaining = Math.max(0, displayedDue - displayedPaid);
   const nextPayment = upcoming[0];
   const today = new Date();
   const nextIsOverdue = nextPayment && state.selectedMonth === monthKey(today) && nextPayment.dueDay < today.getDate();
@@ -339,7 +341,7 @@ function renderOverview() {
         <div><span>Available after payments</span><strong>${currency(Math.max(0, savings))}</strong><small>${savingsShare.toFixed(1)}% remains</small></div>
         <div class="income-meter"><i style="width:${emiShare}%"></i></div>
         <p><span><i></i>Debt payments ${currency(data.due)}</span><span><i></i>Available funds ${currency(Math.max(0, savings))}</span></p>
-        <footer><span>Payment status</span><span>Paid <strong>${currency(paidTotal)}</strong></span><span>Remaining <strong>${currency(remainingTotal)}</strong></span></footer>
+        <footer><span>Payment status</span><span>Paid <strong>${currency(displayedPaid)}</strong></span><span>Remaining <strong>${currency(displayedRemaining)}</strong></span></footer>
       </div>
     </section>
 
