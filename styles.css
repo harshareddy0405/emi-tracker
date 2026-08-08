@@ -529,8 +529,8 @@ h3 { font: 650 16px/1.35 "DM Sans", sans-serif; letter-spacing: -.2px; }
 .payment-amount .status-manual { color: #b54708; }
 .type-badge { display: inline-flex; margin-left: 7px; padding: 3px 6px; border-radius: 4px; color: #b54708; background: #fffaeb; font-size: 8px; font-style: normal; font-weight: 750; letter-spacing: .35px; vertical-align: 1px; }
 
-.search-box { height: 42px; border-color: #d0d5dd; border-radius: 8px; box-shadow: 0 1px 2px rgba(16,24,40,.03); }
-.search-box input { font-size: 13px; }
+.search-box { height: 44px; border-color: #d0d5dd; border-radius: 8px; box-shadow: 0 1px 2px rgba(16,24,40,.03); }
+.search-box input { height: 100%; font-size: 13px; }
 .filter-chip { min-height: 38px; padding: 0 13px; border-color: #d0d5dd; border-radius: 8px; color: #475467; background: #fff; font-size: 12px; }
 .filter-chip.active { border-color: #0b5c53; background: #0b5c53; }
 .loans-panel { box-shadow: none; }
@@ -1054,7 +1054,7 @@ body.dark .source-files span { color: #d0d5dd; }
   .loan-toolbar .filter-chips { display: none; }
   .mobile-lender-filter { display: block; width: 100%; }
   .mobile-lender-filter > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .mobile-lender-filter select { width: 100%; height: 44px; padding: 0 13px; color: #344054; border: 1px solid #d0d5dd; border-radius: 8px; background: #fff; font-size: 13px; }
+  .mobile-lender-filter select { width: 100%; height: 46px; padding: 0 13px; color: #344054; border: 1px solid #d0d5dd; border-radius: 8px; background: #fff; font-size: 13px; }
   .secondary-button { min-height: 44px; }
   body.dark .entity-backbar { background: rgba(24,32,29,.96); }
 }
